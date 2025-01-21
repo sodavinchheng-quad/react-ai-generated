@@ -1,0 +1,28 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "printWidth": 80,
+  "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": ["*.yaml"],
+      "options": {
+        "singleQuote": true
+      }
+    },
+    {
+      "files": ["src/ducks/**/actions.ts"],
+      "options": {
+        "printWidth": 160
+      }
+    },
+    {
+      "files": ["src/ducks/**/operator.ts"],
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
+}
