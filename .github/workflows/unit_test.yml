@@ -1,0 +1,45 @@
+name: Run unit test
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches:
+      - "*"
+      - "!release"
+      - "!release-develop"
+      - "!release-staging"
+
+jobs:
+  suites:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: szenius/set-timezone@v2.0
+        with:
+          timezoneLinux: "Asia/Tokyo"
+          timezoneMacos: "Asia/Tokyo"
+          timezoneWindows: "Asia/Tokyo"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.16.0
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v4
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: yarn install --prefer-offline
+
+      - name: Run the tests
+        run: make test
