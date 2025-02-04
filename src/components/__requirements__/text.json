@@ -1,0 +1,60 @@
+{
+  "componentType": "atom",
+  "name": "Text",
+  "description": "A reusable text component that supports different styles and HTML tags.",
+  "structure": {
+    "src": {
+      "components": {
+        "atoms": {
+          "Text": {
+            "index.tsx": "Component implementation file"
+          }
+        }
+      }
+    }
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "description": "The text or elements to be displayed within the Text component.",
+      "required": true
+    },
+    "variant": {
+      "type": "string",
+      "description": "Defines the HTML tag to be used (e.g., 'p', 'span', 'h1', etc.).",
+      "default": "p",
+      "options": ["p", "span", "h1", "h2", "h3", "h4", "h5", "h6"]
+    },
+    "color": {
+      "type": "string",
+      "description": "Specifies the color of the text.",
+      "default": "#000"
+    },
+    "fontSize": {
+      "type": "string",
+      "description": "Specifies the font size of the text.",
+      "default": "16px"
+    },
+    "fontWeight": {
+      "type": "number",
+      "description": "Specifies the font weight of the text.",
+      "default": 400
+    },
+    "textAlign": {
+      "type": "string",
+      "description": "Defines the text alignment.",
+      "default": "left",
+      "options": ["left", "right", "center", "justify"]
+    }
+  },
+  "examples": [
+    {
+      "code": "<Text variant='h1' color='#333' fontSize='24px'>Hello, World!</Text>",
+      "description": "Displays a heading text with custom color and font size."
+    },
+    {
+      "code": "<Text textAlign='center'>This is centered text.</Text>",
+      "description": "Displays centered paragraph text."
+    }
+  ]
+}

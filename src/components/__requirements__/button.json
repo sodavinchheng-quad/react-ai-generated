@@ -1,0 +1,59 @@
+{
+  "componentType": "atom",
+  "name": "Button",
+  "description": "A reusable button component with support for different styles and sizes.",
+  "structure": {
+    "src": {
+      "components": {
+        "atoms": {
+          "Button": {
+            "index.tsx": "Component implementation file"
+          }
+        }
+      }
+    }
+  },
+  "props": {
+    "children": {
+      "type": "React.ReactNode",
+      "description": "The text or elements to be displayed within the Button component.",
+      "required": true
+    },
+    "onClick": {
+      "type": "() => void",
+      "description": "Function to be called when the button is clicked.",
+      "required": true
+    },
+    "variant": {
+      "type": "string",
+      "description": "Defines the style variant of the button.",
+      "default": "primary",
+      "options": ["primary", "secondary", "danger"]
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Indicates whether the button is disabled.",
+      "default": false
+    },
+    "size": {
+      "type": "string",
+      "description": "Defines the size of the button.",
+      "default": "medium",
+      "options": ["small", "medium", "large"]
+    }
+  },
+  "examples": [
+    {
+      "code": "<Button onClick={() => console.log('Clicked!')}>Click Me</Button>",
+      "description": "Displays a primary button with default size."
+    },
+    {
+      "code": "<Button variant='secondary' size='large' onClick={() => alert('Clicked!')}>Alert</Button>",
+      "description": "Displays a large secondary button."
+    },
+    {
+      "code": "<Button disabled onClick={() => console.log('Will not run')}>Disabled</Button>",
+      "description": "Displays a disabled button that cannot be clicked."
+    }
+  ]
+}
