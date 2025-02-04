@@ -1,0 +1,64 @@
+{
+  "componentType": "atom",
+  "name": "Input",
+  "description": "A reusable input component that supports different styles, types, and sizes.",
+  "structure": {
+    "src": {
+      "components": {
+        "atoms": {
+          "Input": {
+            "index.tsx": "Component implementation file"
+          }
+        }
+      }
+    }
+  },
+  "props": {
+    "type": {
+      "type": "string",
+      "description": "Specifies the type of input (e.g., 'text', 'number', 'password').",
+      "default": "text",
+      "options": ["text", "number", "password", "email", "search"]
+    },
+    "value": {
+      "type": "string",
+      "description": "The value of the input element.",
+      "required": true
+    },
+    "onChange": {
+      "type": "(event: React.ChangeEvent<HTMLInputElement>) => void",
+      "description": "Function to be called when the value of the input changes.",
+      "required": true
+    },
+    "placeholder": {
+      "type": "string",
+      "description": "Placeholder text for the input.",
+      "default": ""
+    },
+    "size": {
+      "type": "string",
+      "description": "Defines the size of the input.",
+      "default": "medium",
+      "options": ["small", "medium", "large"]
+    },
+    "disabled": {
+      "type": "boolean",
+      "description": "Indicates whether the input is disabled.",
+      "default": false
+    }
+  },
+  "examples": [
+    {
+      "code": "<Input type='text' value={value} onChange={handleChange} placeholder='Enter text' />",
+      "description": "Displays a medium-sized text input with a placeholder."
+    },
+    {
+      "code": "<Input type='password' value={password} onChange={handlePasswordChange} placeholder='Password' size='large' />",
+      "description": "Displays a large password input."
+    },
+    {
+      "code": "<Input type='email' value={email} onChange={handleEmailChange} disabled />",
+      "description": "Displays a disabled email input."
+    }
+  ]
+}
