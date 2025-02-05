@@ -1,23 +1,26 @@
+import { useEffect } from "react";
+import { Provider } from "react-redux";
 import "./App.css";
+import {
+  axiosInstance,
+  requestFailure,
+  requestSuccess,
+} from "./core/http/httpClient";
+import { RouteConfig } from "./RouteConfig";
+import { store } from "./store";
 
 function App() {
+  useEffect(() => {
+    axiosInstance.interceptors.response.use(
+      (config) => requestSuccess(config),
+      (config) => requestFailure(config, store),
+    );
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React (edited by AI)
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <RouteConfig />
+    </Provider>
   );
 }
 
